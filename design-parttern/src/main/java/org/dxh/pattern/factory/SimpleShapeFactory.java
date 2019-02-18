@@ -1,5 +1,10 @@
 package org.dxh.pattern.factory;
 
+import org.dxh.pattern.factory.Shape.Circle;
+import org.dxh.pattern.factory.Shape.Rectangle;
+import org.dxh.pattern.factory.Shape.Shape;
+import org.dxh.pattern.factory.Shape.Square;
+
 /**
  * A simple sample factory class
  * 一个简单的工厂类

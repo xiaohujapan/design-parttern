@@ -1,4 +1,4 @@
-package org.dxh.pattern.factory.Shape;
+package org.dxh.pattern.factory.color;
 
 /**
  * This Class is implement Shape,In Order to implement draw method
@@ -8,10 +8,11 @@ package org.dxh.pattern.factory.Shape;
  * @author xiaohujapan
  * @since 8.0
  */
-public class RectangleFactory implements ShapeFactory {
+public class Red implements Color {
 
-	public Shape getShape() {
-		return new Rectangle();
+	@Override
+	public void fill() {
+		System.out.println("Inside Red::fill() method.");
 	}
 
 }

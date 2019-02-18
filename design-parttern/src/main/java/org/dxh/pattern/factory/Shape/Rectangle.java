@@ -1,4 +1,4 @@
-package org.dxh.pattern.factory;
+package org.dxh.pattern.factory.Shape;
 
 
 /**

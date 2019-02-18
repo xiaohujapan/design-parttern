@@ -1,5 +1,7 @@
 package org.dxh.pattern.factory;
 
+import org.dxh.pattern.factory.Shape.ShapeFactory;
+
 /**
  * Use this factory method in order to get object
  * 使用该工厂方法，通过传递类型信息来获取实体类的对象。

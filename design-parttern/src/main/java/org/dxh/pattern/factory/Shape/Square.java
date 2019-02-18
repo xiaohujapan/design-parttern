@@ -1,4 +1,4 @@
-package org.dxh.pattern.factory;
+package org.dxh.pattern.factory.Shape;
 
 /**
  * This Class is implement Shape,In Order to implement draw method

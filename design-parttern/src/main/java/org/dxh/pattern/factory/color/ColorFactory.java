@@ -1,4 +1,4 @@
-package org.dxh.pattern.factory.Shape;
+package org.dxh.pattern.factory.color;
 
 /**
  * A simple sample interface In order to create Shape
@@ -8,6 +8,6 @@ package org.dxh.pattern.factory.Shape;
  * @author xiaohujapan
  * @since 8.0
  */
-public interface ShapeFactory {
-	public Shape getShape();
+public interface ColorFactory {
+	public Color getColor();
 }
