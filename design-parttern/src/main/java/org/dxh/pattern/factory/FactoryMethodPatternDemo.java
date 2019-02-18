@@ -1,4 +1,4 @@
-package org.dxh.pattern.factorymethod;
+package org.dxh.pattern.factory;
 
 /**
  * Use this factory method in order to get object

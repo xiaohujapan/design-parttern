@@ -1,4 +1,4 @@
-package org.dxh.pattern.factorymethod;
+package org.dxh.pattern.factory;
 
 /**
  * A simple sample factory class

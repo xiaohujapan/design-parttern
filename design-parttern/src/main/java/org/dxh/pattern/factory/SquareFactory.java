@@ -1,4 +1,4 @@
-package org.dxh.pattern.factorymethod;
+package org.dxh.pattern.factory;
 
 /**
  * This Class is implement Shape,In Order to implement draw method
@@ -8,10 +8,10 @@ package org.dxh.pattern.factorymethod;
  * @author xiaohujapan
  * @since 8.0
  */
-public class Square implements Shape {
+public class SquareFactory implements ShapeFactory {
 
-	public void draw() {
-		System.out.println("Inside Square::draw() method.");		
+	public Shape getShape() {
+		return new Square();
 	}
 
 }
