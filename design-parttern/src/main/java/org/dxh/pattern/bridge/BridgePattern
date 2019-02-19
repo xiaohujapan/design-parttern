@@ -1,0 +1,37 @@
+【桥接（Bridge）（ブリッジ・パターン）】
+
+「CN」
+通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。
+这种模式涉及到一个作为桥接的接口，使得实体类的功能独立于接口实现类。这两种类型的类可被结构化改变而互不影响。
+意图：将抽象部分与实现部分分离，使它们都可以独立的变化。
+主要解决：在有多种可能会变化的情况下，用继承会造成类爆炸问题，扩展起来不灵活。
+何时使用：实现系统可能有多个角度分类，每一种角度都可能变化。
+如何解决：把这种多角度分类分离出来，让它们独立变化，减少它们之间耦合。
+关键代码：抽象类依赖实现类。
+应用实例： 1、猪八戒从天蓬元帅转世投胎到猪，转世投胎的机制将尘世划分为两个等级，即：灵魂和肉体，前者相当于抽象化，后者相当于实现化。生灵通过功能的委派，调用肉体对象的功能，使得生灵可以动态地选择。 2、墙上的开关，可以看到的开关是抽象的，不用管里面具体怎么实现的。
+优点： 1、抽象和实现的分离。 2、优秀的扩展能力。 3、实现细节对客户透明。
+缺点：桥接模式的引入会增加系统的理解与设计难度，由于聚合关联关系建立在抽象层，要求开发者针对抽象进行设计与编程。
+使用场景： 1、如果一个系统需要在构件的抽象化角色和具体化角色之间增加更多的灵活性，避免在两个层次之间建立静态的继承联系，通过桥接模式可以使它们在抽象层建立一个关联关系。 2、对于那些不希望使用继承或因为多层次继承导致系统类的个数急剧增加的系统，桥接模式尤为适用。 3、一个类存在两个独立变化的维度，且这两个维度都需要进行扩展。
+注意事项：对于两个独立变化的维度，使用桥接模式再适合不过了。
+
+「US」
+The Bridge design pattern　is to solve recurring design problems to design flexible and reusable object-oriented software, that is, objects that are easier to implement, change, test, and reuse.
+What problems can the Bridge design pattern solve? [3]
+An abstraction and its implementation should be defined and extended independently from each other.
+A compile-time binding between an abstraction and its implementation should be avoided so that an implementation can be selected at run-time.
+When using subclassing, different subclasses implement an abstract class in different ways. But an implementation is bound to the abstraction at compile-time and can't be changed at run-time.
+What solution does the Bridge design pattern describe?
+Separate an abstraction (Abstraction) from its implementation (Implementor) by putting them in separate class hierarchies.
+Implement the Abstraction in terms of (by delegating to) an Implementor object.
+This enables to configure an Abstraction with an Implementor object at run-time. 
+See also the Unified Modeling Language class and sequence diagram below.
+
+
+「JP」
+Bridgeパターンを利用することで、機能と実装を分離して、それぞれを独立に拡張することができるようになります。
+まず Dishware（食器）クラスから Plate（皿）と Bowl（ボウル）クラスが派生している。 さらに、Plate からは WoodenPlate（木製の皿）と GlassPlate（ガラス製の皿）が、 Bowl からは WoodenBowl（木製のボウル）と GlassBowl（ガラス製のボウル）が派生している。
+このクラス階層は、以下に挙げる問題をはらんでいる。
+クラスの追加が困難である。仮にプラスチック製の食器を新たにサポートしようとする場合、Plate クラスと Bowl クラスのそれぞれを継承しなければならない。あるいは Dishware クラスのサブクラスとして例えば Cup クラスを追加する場合、WoodenCup や GlassCup を同時に作成しなければならない。
+コードの複製が発生する。例に挙げた WoodenPlate と WoodenBowl, GlassPlate と GlassBowl はそれぞれ同じ材質の食器であるため、内部的に似たような性質を持っているかもしれない。しかしながら、継承関係の都合上これらのクラスはすべて個別に定義しなければならず、結果として同じようなコードを別途に記述しなければならなくなる。
+この問題が起こる理由は、クラス階層の中に複数の継承関係が混在していることである。 上の例において、Dishware と Plate および Bowl の関係は、食器の種類による継承関係とみなすことができ、 一方で Plate と WoodenPlate および GlassPlate の関係は、食器の材質による継承関係とみなすことができる。 このように複数の継承関係が存在することにより、一つの継承関係が他の継承関係に悪影響を及ぼすことになる。
+このクラス構造は、Bridge パターンを適用することによって以下のように改善することができる。
