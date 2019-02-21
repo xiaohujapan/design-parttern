@@ -1,0 +1,26 @@
+【策略模式（Strategy Pattern）】
+
+「CN」
+在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。
+在策略模式中，我们创建表示各种策略的对象和一个行为随着策略对象改变而改变的 context 对象。策略对象改变 context 对象的执行算法。
+意图：定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。
+主要解决：在有多种算法相似的情况下，使用 if...else 所带来的复杂和难以维护。
+何时使用：一个系统有许多许多类，而区分它们的只是他们直接的行为。
+如何解决：将这些算法封装成一个一个的类，任意地替换。
+关键代码：实现同一个接口。
+应用实例： 1、诸葛亮的锦囊妙计，每一个锦囊就是一个策略。 2、旅行的出游方式，选择骑自行车、坐汽车，每一种旅行方式都是一个策略。 3、JAVA AWT 中的 LayoutManager。
+优点： 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展性良好。
+缺点： 1、策略类会增多。 2、所有策略类都需要对外暴露。
+使用场景： 1、如果在一个系统里面有许多类，它们之间的区别仅在于它们的行为，那么使用策略模式可以动态地让一个对象在许多行为中选择一种行为。 2、一个系统需要动态地在几种算法中选择一种。 3、如果一个对象有很多的行为，如果不用恰当的模式，这些行为就只好使用多重的条件选择语句来实现。
+注意事项：如果一个系统的策略多于四个，就需要考虑使用混合模式，解决策略类膨胀的问题。
+
+
+「US」
+The strategy pattern enables selecting an algorithm at runtime. Instead of implementing a single algorithm directly, code receives run-time instructions as to which in a family of algorithms to use.[1]
+Strategy lets the algorithm vary independently from clients that use it.[2] Strategy is one of the patterns included in the influential book Design Patterns by Gamma et al.[3] that popularized the concept of using design patterns to describe how to design flexible and reusable object-oriented software. Deferring the decision about which algorithm to use until runtime allows the calling code to be more flexible and reusable.
+For instance, a class that performs validation on incoming data may use the strategy pattern to select a validation algorithm depending on the type of data, the source of the data, user choice, or other discriminating factors. These factors are not known until run-time and may require radically different validation to be performed. The validation algorithms (strategies), encapsulated separately from the validating object, may be used by other validating objects in different areas of the system (or even different systems) without code duplication.
+Typically the strategy pattern stores a reference to some code in a data structure and retrieves it. This can be achieved by mechanisms such as the native function pointer, the first-class function, classes or class instances in object-oriented programming languages, or accessing the language implementation's internal storage of code via reflection.
+
+「JP」
+Strategy パターンを利用することで、戦略の切り替えや追加が簡単に行えるようになります。
+普通にプログラミングしていると、メソッドの中に溶け込んだ形でアルゴリズムを実装してしまうことがよくあります。if 文などで分岐させることでアルゴリズムを変更するような方法です。Strategy パターンでは、戦略の部分を意識して別クラスとして作成するようにしています。戦略x部分を別クラスとして作成しておき、戦略を変更したい場合には、利用する戦略クラスを変更するという方法で対応します。Strategy パターンを利用することで、メソッドの中に溶け込んだ形のアルゴリズムより柔軟でメンテナンスしやすい設計となります。
