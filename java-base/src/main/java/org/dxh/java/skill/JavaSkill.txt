@@ -1,0 +1,9 @@
+【Java技巧】
+1.[hashCode()方法和equals()]
+一、hashCode()和equals()是什么？
+hashCode()方法和equals()方法的作用其实一样，在Java里都是用来对比两个对象是否相等一致。
+
+二、hashCode()和equals()的区别
+下边从两个角度介绍了他们的区别：一个是性能，一个是可靠性。他们之间的主要区别也基本体现在这里。
+
+ 
