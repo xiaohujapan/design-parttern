@@ -1,0 +1,32 @@
+【HashMap】
+「1.8版本的HashMap数据结构」
+（因为get（）需要遍历整张链表）当某一链表元素>8时，该链表就会转成红黑树结构，从而改善查询速度
+
+「Hashmap原理」
+・ put原理
+1.根据key获取对应hash值：int hash = hash（key.hash.hashcode（））
+2.根据hash值和数组长度确定对应数组引int i = indexFor(hash, table.length); 
+其实就是i = hash值%模以 数组长度。如果不同的key都映射到了数组的同一位置处，就将其放入单链表中。
+・get原理
+获得对应数组位置，遍历该数组所在链表（key.equals（））
+
+「hashcode相同，冲突怎么办」
+放到对应的链表。
+
+「hashmap达到默认负载因子（0.75）怎么办」
+自动双倍扩容，扩容后重新计算每个键值对位置。
+
+           	「hashmap」　　　「hashtable」
+线程:  			安全                   不安全
+效率：     			略高                   略低
+数组默认值：              16          11
+null值：        key-value都容许       不容许（抛异常）
+hashmapkey为null的map对象就在索引为0的位置上
+
+           	「hashmap」　　　「concurrenthashmap」
+线程:  		    不安全                    安全
+
+「为啥concurrenthashmap和hashtable都是线程安全，但是前者性能更高？」
+因为前者是用的分段锁，根据hash值锁住对应链表，当hash值不同时，使其能实现并行插入，效率更高
+
+
