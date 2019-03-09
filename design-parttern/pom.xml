@@ -6,6 +6,14 @@
   <name>23種類のデザインパターン</name>
   <description>23種類のデザインパターン</description>
   
+  <dependencies>
+	<dependency>
+	    <groupId>cglib</groupId>
+	    <artifactId>cglib</artifactId>
+	    <version>3.2.10</version>
+	</dependency>
+  </dependencies>
+  
   <build>
 	<plugins>
 		<plugin>
