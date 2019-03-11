@@ -1,3 +1,6 @@
+【Hash】
+Hash，一般翻译做散列、杂凑，或音译为哈希，是把任意长度的输入（又叫做预映射pre-image）通过散列算法变换成固定长度的输出，该输出就是散列值。
+
 【HashMap】
 「1.8版本的HashMap数据结构」
 （因为get（）需要遍历整张链表）当某一链表元素>8时，该链表就会转成红黑树结构，从而改善查询速度
@@ -17,7 +20,7 @@
 自动双倍扩容，扩容后重新计算每个键值对位置。
 
            	「hashmap」　　　「hashtable」
-线程:  			安全                   不安全
+线程:  		　　　 不安全               安全
 效率：     			略高                   略低
 数组默认值：              16          11
 null值：        key-value都容许       不容许（抛异常）
@@ -29,4 +32,58 @@ hashmapkey为null的map对象就在索引为0的位置上
 「为啥concurrenthashmap和hashtable都是线程安全，但是前者性能更高？」
 因为前者是用的分段锁，根据hash值锁住对应链表，当hash值不同时，使其能实现并行插入，效率更高
 
+1.HashMap 是什么，实现原理？
+HashMap的实现方式是数组+链表，主体是数组，链表只是用来做辅助的。
+HashMap的主干是一个Node数组,每一个Node包含一个Key-Value键值对。
+HashMap通过计算Key的哈希值来确实Key-Value在HashMap中的插入、查询位置
+HashMap最重要和复杂的方法put方法，扩容方法，get相对来说比较简单。
+HashMap是基于哈希表的Map接口的非同步实现
 
+HashMap是基于hashing的原理，我们使用put(key, value)存储对象到HashMap中，使用get(key)从HashMap中获取对象。
+当我们给put()方法传递键和值时，我们先对键调用hashCode()方法，返回的hashCode用于找到bucket位置来储存Entry对象。
+HashMap是在bucket中储存键对象和值对象，作为Map.Entry
+
+HashMap是一个存储key和value的集合，一个key对应一个value，实现原理是使用hash算法通过对key进行hash后存储哈希表
+（也称为哈希数组）中，哈希表（哈希数组）的每个元素都是一个单链表的头节点，链表是用来解决冲突的，如果不同的key映射到了数组的同一位置处，就将其放入单链表中。
+
+2.HashMap 默认bucket（桶）数组多大？（上面已经给出），最大容量是多少？
+ 默认值初始值为16，最大值2的30次方。
+
+3.如果new HashMap<>(19)，bucket数组多大？
+HashMap 的 bucket 数组大小一定是2的幂，如果 new 的时候指定了容量且不是2的幂， 
+实际容量会是最接近(大于)指定容量的2的幂，比如 new HashMap<>(19)，比19大且最接近的2的幂是32，实际容量就是32。
+
+4.HashMap 什么时候开辟bucket数组占用内存？
+HashMap 在 new 后并不会立即分配bucket数组，而是第一次 put 时初始化使用resize() 函数进行分配。
+
+5.HashMap 何时扩容？
+JDK1.8的解决方案是HashMap的大小超过了数组长度的75%(loadFactor=0.75), 就会对数组进行扩容(创建一个新数组容量是原来的2倍)
+resize()方法进行扩容，扩容是一个相当耗时的操作，因为它需要重新计算这些元素在新的数组中的位置并进行复制处理。
+
+6.为什么String, Interger这样的包装类类适合作为HashMap的key（键）呢？
+String, Interger这样的wrapper类作为HashMap的键是再适合不过了，而且String最为常用。
+因为String是不可变的，也是final的，而且已经重写了equals()和hashCode()方法了。
+
+7.如果用自定义对象当做hashmap的key进行存储要注意什么？
+（1）.要注意这个对象是否为可变对象。
+（2）.一定要重写hashcode方法和equals方法，因为在HashMap的源代码里面，是先比较HashCode是否相等，同时要满足引用相等或者equals相等。
+
+8.当两个对象的hashcode相同会发生什么（如何解决hash冲突）？如果两个键的hashcode相同，你如何获取值对象？
+因为hashcode相同，所以它们的bucket位置相同，‘碰撞’会发生。因为HashMap使用LinkedList存储对象，
+这个Entry(包含有键值对的Map.Entry对象)会存储在LinkedList中。
+我们调用get()方法，HashMap会使用键对象的hashcode找到bucket位置，找到bucket位置之后，会调用keys.equals()方法去找到LinkedList中正确的节点
+，最终找到要找的值对象。
+添加的位置已经有元素了，也就是发生了碰撞，这个时候分以下几种情况
+第一种情况：key值相同，直接覆盖
+第二种情况：判断链表是否为红黑树
+第三种情况：链表是正常的链表(直接插到最后面就可以了)
+
+9.HashMap 和 ConcurrentHashMap的区别？
+HashMap是线程不安全的，单线程情况下使用；而ConcurrentHashMap是线程安全的，多线程使用！
+
+10.jdk1.7和jdk1.8中HashMap的实现有哪些区别？
+JDK7 中的 HashMap 采用数组+链表的结构来存储数据。
+JDK8 中的 HashMap 采用数组+链表或红黑树的结构来存储数据。
+ 
+ 
+ 
