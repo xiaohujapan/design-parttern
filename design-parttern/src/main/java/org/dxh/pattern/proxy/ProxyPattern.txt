@@ -35,4 +35,59 @@ To act as substitute for a subject, a proxy must implement the Subject interface
 Proxy（プロキシ、代理人）とは、大まかに言えば、別の物のインタフェースとして機能するクラスである。その「別の物」とは何でもよく、ネットワーク接続だったり、メモリ上の大きなオブジェクトだったり、複製がコスト高あるいは不可能な何らかのリソースなどである。
 複雑なオブジェクトの複数のコピーが必須となる状況では、Proxy パターンに Flyweight パターンを加えることでメモリ使用量を抑えることができる。通常、複雑なオブジェクトのインスタンスは1つだけ生成し、プロキシオブジェクトを複数生成する。それらプロキシオブジェクトは唯一の複雑なオブジェクトへの参照を含む。プロキシへの操作は、オリジナルのオブジェクトにフォワードされる。プロキシオブジェクトが全て破棄されると、参照されていた複雑なオブジェクトの使用していたメモリも解放される。
 
+[静态代理]
+如果在编译阶段就能确定下来的被代理的类是哪一个，那么，就可以使用静态代理的方式。
+
+[动态代理]
+如果不能在代码的编译阶段就去确定需要代理的类是哪一个的话，就可以使用类的动态代理机制，在代码运行期间去动态加载类的信息。
+Java动态代理和Cglib方式的代理的重要区别：
+
+Java动态代理只能对接口进行代理，如果要代理的类是一个普通的类，没有接口则需要使用Cglib来实现。
+Java动态代理是利用反射机制生成一个实现代理接口的匿名类，在调用具体方法前调用InvokeHandler来处理。
+Cglib动态代理是利用asm开源包，对代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。
+
+
+[JDK自带方法]
+最核心的一个接口和一个方法
+java.lang.reflect包里的InvocationHandler接口
+public interface InvocationHandler {
+    public Object invoke(Object proxy, Method method, Object[] args)
+        throws Throwable;
+}
+对于被代理的类的操作都会由该接口中的invoke方法实现，其中的参数的含义分别是：
+・proxy：被代理的类的实例
+・method：调用被代理的类的方法
+・args：该方法需要的参数
+使用方法首先是需要实现该接口，并且我们可以在invoke方法中调用被代理类的方法并获得返回值，自然也可以在调用该方法的前后去做一些额外的事情，从而实现动态代理
+
+重要的静态方法是java.lang.reflect包中的Proxy类的newProxyInstance方法
+public static Object newProxyInstance(ClassLoader loader,
+                                      Class<?>[] interfaces,
+                                      InvocationHandler h)throws IllegalArgumentException
+其中的参数含义如下：
+・loader：被代理的类的类加载器
+・interfaces：被代理类的接口数组
+・invocationHandler：就是刚刚介绍的调用处理器类的对象实例
+该方法会返回一个被修改过的类的实例，从而可以自由的调用该实例的方法。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

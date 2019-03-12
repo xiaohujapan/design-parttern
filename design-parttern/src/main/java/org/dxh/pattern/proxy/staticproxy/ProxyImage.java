@@ -1,4 +1,4 @@
-package org.dxh.pattern.proxy;
+package org.dxh.pattern.proxy.staticproxy;
 
 public class ProxyImage implements Image {
 	  private RealImage realImage;

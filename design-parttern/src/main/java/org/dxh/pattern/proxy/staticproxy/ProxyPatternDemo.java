@@ -1,4 +1,4 @@
-package org.dxh.pattern.proxy;
+package org.dxh.pattern.proxy.staticproxy;
 
 public class ProxyPatternDemo {
 
