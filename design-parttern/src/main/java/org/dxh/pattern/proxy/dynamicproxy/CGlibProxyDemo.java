@@ -17,6 +17,7 @@ public class CGlibProxyDemo implements MethodInterceptor {
         enhancer.setCallback(this);
         // 创建代理对象
         return enhancer.create();
+        
     }
 
     //回调方法
