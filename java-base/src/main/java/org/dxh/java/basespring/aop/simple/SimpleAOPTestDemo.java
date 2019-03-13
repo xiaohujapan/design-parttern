@@ -5,8 +5,7 @@ public class SimpleAOPTestDemo {
 	public static void main(String[] args) {
 		// 1. 创建一个 MethodInvocation 实现类
 		MethodInvocation logTask = new MethodInvocationImpl();
-		HelloWorld helloServiceImpl = new HelloWorldImpl();
-		
+		HelloWorld helloServiceImpl = new HelloWorldImpl();	
 		 // 2. 创建一个 Advice
 		 Advice beforeAdvice = new BeforeAdvice(helloServiceImpl, logTask);
 		 
