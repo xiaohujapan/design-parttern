@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+    <bean id="helloWorldService" class="org.dxh.java.basespring.tinyioc.step3.HelloWorldService">
+        <property name="text" value="Hello World!" />
+    </bean>
+</beans>

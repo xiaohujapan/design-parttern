@@ -78,6 +78,10 @@ public class SimpleIOC {
                         String value = propertyElement.getAttribute("value");
 
                             // 利用反射将 bean 相关字段访问权限设为可访问
+                        /**
+                         * getDeclaredField是可以获取一个类的所有字段. 
+						 * getField只能获取类的public 字段. 
+                         */
                         Field declaredField = bean.getClass().getDeclaredField(name);
                         declaredField.setAccessible(true);
 
