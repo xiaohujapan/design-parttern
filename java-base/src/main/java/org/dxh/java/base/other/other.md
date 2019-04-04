@@ -70,9 +70,12 @@ pf.isEnQueued();//返回是否从内存中已经删除
 Java4种引用的级别由高到低依次为：
    强引用  >  软引用  >  弱引用  >  虚引用
 
-
-
-
+3.Array.sort();
+不论是Collections.sort方法或者是Arrays.sort方法，底层实现都是TimSort实现的
+TimSort算法就是找到已经排好序数据的子序列，然后对剩余部分排序，然后合并起来
+legacyMergeSort(a)：归并排序
+ComparableTimSort.sort()：Timsort排序
+Timsort排序是结合了合并排序（merge sort）和插入排序（insertion sort）而得出的排序算法
 
 
 
