@@ -4,7 +4,9 @@ public class ArrayTest {
 	
 	public static void main(String[] args) {
 		int maxSize = 100;
-		HighArray array = new HighArray(maxSize);
+		//ArrayInterface array = new NormalArray(maxSize);
+		ArrayInterface array = new OrderArray(maxSize);
+		
 		array.insert(77);
 		array.insert(99);
 		array.insert(44);
@@ -12,20 +14,20 @@ public class ArrayTest {
 		array.insert(22);
 		array.insert(88);
 		array.insert(11);
-		array.insert(27);
+		array.insert(00);
 		array.insert(66);
 		array.insert(33);
 		
 		array.display();
 		
-		int searchKey = 35;
-		if(array.find(searchKey)) {
+		int searchKey = 55;
+		if(array.find(searchKey) != array.size()) {
 			System.out.println("Found " + searchKey);
 		}else {
 			System.out.println("Can't find  " + searchKey);
 		}
 		
-		array.delete(27);
+		array.delete(00);
 		array.delete(55);
 		array.delete(99);
 		

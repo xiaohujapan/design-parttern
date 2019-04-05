@@ -1,15 +1,19 @@
 package org.dxh.java.algorithm.array;
 
-public class HighArray {
+public class NormalArray implements ArrayInterface{
 	private long[] a;
 	private int nElems;
 	
-	public HighArray(int max) {
+	public NormalArray(int max) {
 		a = new long[max];
 		nElems = 0;
 	}
 	
-	public boolean find(long searchKey) {
+	public int size() {
+		return nElems;
+	}
+	
+	public int find(long searchKey) {
 		int j;
 		for(j=0;j<nElems;j++) {
 			if(a[j] == searchKey) {
@@ -17,9 +21,9 @@ public class HighArray {
 			}
 		}
 		if(j == nElems) {
-			return false;
+			return nElems;
 		}else {
-			return true;
+			return j;
 		}
 	}
 	
@@ -48,7 +52,9 @@ public class HighArray {
 	
 	public void display() {
 		for(int j=0;j<nElems;j++) {
-			System.out.println(a[j] + "  ");
+			System.out.print(a[j] + " ,  ");
 		}
+		System.out.println("");
+		System.out.println("=================");
 	}
 }
