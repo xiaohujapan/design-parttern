@@ -84,6 +84,7 @@ class Solver{
 		}
 	}
 	
+	
 	public Solver(float[][] matrix) {
 		data = matrix;
 		N = matrix.length;
